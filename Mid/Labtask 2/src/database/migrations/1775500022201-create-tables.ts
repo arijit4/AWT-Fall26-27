@@ -4,7 +4,7 @@ export class CreateTable1775500022201 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "products",
+        name: "cars",
         columns: [
           {
             name: "id",
@@ -14,12 +14,12 @@ export class CreateTable1775500022201 implements MigrationInterface {
             default: "uuid_generate_V4()",
           },
           {
-            name: "name",
+            name: "model",
             type: "varchar",
             isNullable: false,
           },
           {
-            name: "category",
+            name: "number_plate",
             type: "varchar",
             isNullable: false,
           },
@@ -29,65 +29,18 @@ export class CreateTable1775500022201 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: "quantity",
-            type: "integer",
+            name: "is_rented",
+            type: "boolean",
             isNullable: false,
           },
         ],
       }),
     );
 
+
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("products");
-  }
-}
-
-export class CreateTable1775500024201 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.createTable(
-      new Table({
-        name: "users",
-        columns: [
-          {
-            name: "id",
-            type: "uuid",
-            isPrimary: true,
-            generationStrategy: "uuid",
-            default: "uuid_generate_V4()",
-          },
-          {
-            name: "name",
-            type: "varchar",
-            isNullable: false,
-          },
-          {
-            name: "email",
-            type: "varchar",
-            isNullable: false,
-          },
-          {
-            name: "password",
-            type: "varchar",
-            isNullable: false,
-          },
-          {
-            name: "created_at",
-            type: "timestamp",
-            default: "CURRENT_TIMESTAMP(6)",
-          },
-          {
-            name: "updated_at",
-            type: "timestamp",
-            default: "CURRENT_TIMESTAMP(6)",
-          },
-        ],
-      }),
-    );
-  }
-
-  public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("users");
+    await queryRunner.dropTable("cars");
   }
 }
